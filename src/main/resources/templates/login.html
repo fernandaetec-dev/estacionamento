@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso | Estacionamento Escolar</title>
+    <link rel="stylesheet" href="/estacionamento.css">
+</head>
+<body class="auth-page">
+<main class="auth-shell">
+    <section class="auth-aside">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 17V8.8a2 2 0 0 1 1.5-1.94L8.2 6.4l1.1-2.2A2 2 0 0 1 11.1 3h1.8a2 2 0 0 1 1.8 1.1l1.1 2.3 1.7.45A2 2 0 0 1 19 8.8V17"/>
+                    <path d="M3.5 17h17M6 17v2m12-2v2M7 11h10M7 14h.01M17 14h.01"/>
+                </svg>
+            </span>
+            <span class="brand-copy"><strong>Estacionamento</strong><span>Gestão escolar</span></span>
+        </div>
+        <h1>Entrada e saída sem complicação.</h1>
+        <p>Um espaço simples para registrar os veículos da comunidade escolar com mais organização e agilidade.</p>
+        <div class="auth-points">
+            <div class="auth-point"><i>✓</i> Cadastro rápido de usuários</div>
+            <div class="auth-point"><i>✓</i> Controle de entrada e saída</div>
+            <div class="auth-point"><i>✓</i> Interface pensada para a escola</div>
+        </div>
+    </section>
+
+    <section class="auth-card">
+        <p class="eyebrow">Área restrita</p>
+        <h2>Bem-vindo de volta</h2>
+        <p class="subtitle">Entre com seus dados para acessar o painel de estacionamento.</p>
+
+        <form method="post" action="/autenticar" class="form-grid">
+            <div class="field">
+                <label for="email">E-MAIL</label>
+                <input required type="email" name="email" id="email" placeholder="voce@escola.com.br" autocomplete="email">
+            </div>
+            <div class="field">
+                <label for="senha">SENHA</label>
+                <input required type="password" name="senha" id="senha" placeholder="Digite sua senha" autocomplete="current-password">
+            </div>
+            <button class="btn btn-primary btn-full" type="submit">Entrar no painel <span aria-hidden="true">→</span></button>
+        </form>
+
+        <p class="auth-footer">Ainda não possui acesso? <a href="/cadastro">Criar cadastro</a></p>
+    </section>
+</main>
+</body>
+</html>

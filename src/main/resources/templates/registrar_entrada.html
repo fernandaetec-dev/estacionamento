@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada | Estacionamento Escolar</title>
+    <link rel="stylesheet" href="/estacionamento.css">
+</head>
+<body>
+<div class="app-layout">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">↑</span>
+            <span class="brand-copy"><strong>Estacionamento</strong><span>Gestão escolar</span></span>
+        </div>
+        <div class="nav-label">Operações</div>
+        <nav class="nav">
+            <a href="/veiculo/registrar_entrada" class="active"><span class="nav-icon">↑</span><span>Entrada</span></a>
+            <a href="/veiculo/registrar_saida"><span class="nav-icon">↓</span><span>Saída</span></a>
+            <a href="/"><span class="nav-icon">⌂</span><span>Início</span></a>
+        </nav>
+        <div class="sidebar-footer">Registre os dados com atenção para manter o controle da escola atualizado.</div>
+    </aside>
+
+    <main class="main">
+        <div class="operation-wrap">
+            <a class="back-link" href="/">← Voltar ao painel</a>
+            <section class="operation-card">
+                <div class="operation-head">
+                    <div class="operation-icon" aria-hidden="true">↑</div>
+                    <div>
+                        <h1>Registrar entrada</h1>
+                        <p>Informe os dados do veículo que acabou de chegar.</p>
+                    </div>
+                </div>
+
+                <form method="post" action="/veiculo/cadastrar">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="placa">PLACA DO VEÍCULO</label>
+                            <input required type="text" name="placa" id="placa" placeholder="Ex.: ABC1D23" autocomplete="off" style="text-transform:uppercase">
+                            <p class="field-hint">Confira a placa antes de salvar.</p>
+                        </div>
+
+                        <div class="form-grid two">
+                            <div class="field">
+                                <label for="modelo">MODELO</label>
+                                <input required type="text" name="modelo" id="modelo" placeholder="Ex.: Onix">
+                            </div>
+                            <div class="field">
+                                <label for="cor">COR</label>
+                                <input required type="text" name="cor" id="cor" placeholder="Ex.: Prata">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="observacao">OBSERVAÇÃO</label>
+                            <textarea required name="observacao" id="observacao" placeholder="Alguma informação importante sobre o veículo?"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <a class="btn btn-light" href="/">Cancelar</a>
+                        <button class="btn btn-primary" type="submit">Salvar entrada ✓</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+</div>
+</body>
+</html>

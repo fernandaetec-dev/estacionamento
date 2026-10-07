@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel | Estacionamento Escolar</title>
+    <link rel="stylesheet" href="/estacionamento.css">
+</head>
+<body>
+<div class="app-layout">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 17V8.8a2 2 0 0 1 1.5-1.94L8.2 6.4l1.1-2.2A2 2 0 0 1 11.1 3h1.8a2 2 0 0 1 1.8 1.1l1.1 2.3 1.7.45A2 2 0 0 1 19 8.8V17"/>
+                    <path d="M3.5 17h17M6 17v2m12-2v2M7 11h10M7 14h.01M17 14h.01"/>
+                </svg>
+            </span>
+            <span class="brand-copy"><strong>Estacionamento</strong><span>Gestão escolar</span></span>
+        </div>
+
+        <div class="nav-label">Menu</div>
+        <nav class="nav" aria-label="Navegação principal">
+            <a href="#" class="active"><span class="nav-icon">⌂</span><span>Painel</span></a>
+            <a href="/veiculo/registrar_entrada"><span class="nav-icon">↑</span><span>Registrar entrada</span></a>
+            <a href="/veiculo/registrar_saida"><span class="nav-icon">↓</span><span>Registrar saída</span></a>
+        </nav>
+
+        <div class="sidebar-footer">Controle interno do estacionamento escolar.<br>Use o painel para registrar a movimentação.</div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Central de controle</p>
+                <h1 class="page-title">Olá! 👋</h1>
+                <p class="page-subtitle">O que você deseja registrar agora?</p>
+            </div>
+            <div class="date-chip">● Sistema online</div>
+        </header>
+
+        <section class="dashboard-grid" aria-label="Ações do estacionamento">
+            <a class="action-card" href="/veiculo/registrar_entrada">
+                <div>
+                    <div class="action-icon" aria-hidden="true">
+                        <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M12 19V5M7 10l5-5 5 5"/>
+                        </svg>
+                    </div>
+                    <h2>Registrar entrada</h2>
+                    <p>Cadastre a chegada de um veículo e mantenha o movimento do estacionamento atualizado.</p>
+                </div>
+                <span class="action-link">Abrir registro →</span>
+            </a>
+
+            <a class="action-card" href="/veiculo/registrar_saida">
+                <div>
+                    <div class="action-icon exit" aria-hidden="true">
+                        <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M12 5v14M7 14l5 5 5-5"/>
+                        </svg>
+                    </div>
+                    <h2>Registrar saída</h2>
+                    <p>Selecione um veículo que está no estacionamento para registrar sua saída.</p>
+                </div>
+                <span class="action-link">Abrir registro →</span>
+            </a>
+        </section>
+
+        <div class="table-scroll">
+            <table class="parking-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Placa</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Entrada</th>
+                        <th scope="col">Saída</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="veiculo : ${veiculos}">
+                        <td class="plate-cell" th:text="${veiculo.placa}"></td>
+                        <td class="model-cell" th:text="${veiculo.modelo}"></td>
+                        <td class="time-cell" th:text="${veiculo.horaEntrada}"></td>
+                        <td class="time-cell" th:text="${veiculo.horaSaida}"></td>
+                        <td>
+                            <span class="status-badge status-parked">
+                                <span class="status-dot" aria-hidden="true"></span>
+                                Estacionado
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+</body>
+</html>

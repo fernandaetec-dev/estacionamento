@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saída | Estacionamento Escolar</title>
+    <link rel="stylesheet" href="/estacionamento.css">
+</head>
+<body>
+<div class="app-layout">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">↓</span>
+            <span class="brand-copy"><strong>Estacionamento</strong><span>Gestão escolar</span></span>
+        </div>
+        <div class="nav-label">Operações</div>
+        <nav class="nav">
+            <a href="/veiculo/registrar_entrada"><span class="nav-icon">↑</span><span>Entrada</span></a>
+            <a href="/veiculo/registrar_saida" class="active"><span class="nav-icon">↓</span><span>Saída</span></a>
+            <a href="/"><span class="nav-icon">⌂</span><span>Início</span></a>
+        </nav>
+        <div class="sidebar-footer">Selecione a placa correspondente ao veículo que está deixando a escola.</div>
+    </aside>
+
+    <main class="main">
+        <div class="operation-wrap">
+            <a class="back-link" href="/">← Voltar ao painel</a>
+            <section class="operation-card">
+                <div class="operation-head">
+                    <div class="operation-icon exit" aria-hidden="true">↓</div>
+                    <div>
+                        <h1>Registrar saída</h1>
+                        <p>Escolha o veículo que está deixando o estacionamento.</p>
+                    </div>
+                </div>
+
+                <form>
+                    <div class="field">
+                        <label for="placa">VEÍCULO NO ESTACIONAMENTO</label>
+                        <select id="placa" onchange="selecionarVeiculo(this.value)">
+                            <option value="">Selecione a placa</option>
+                            <option th:each="v : ${veiculos}"
+                                    th:value="${v.id}"
+                                    th:text="${v.placa}"
+                                    th:selected="${veiculo != null && veiculo.id == v.id}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div th:if="${veiculo != null}" class="selected-vehicle">
+                        <strong>Veículo selecionado:</strong>
+                        <span th:text="${veiculo.modelo + ' • ' + veiculo.cor}"></span>
+                    </div>
+
+                    <div class="actions">
+                        <a class="btn btn-light" href="/">Cancelar</a>
+                        <button class="btn btn-primary" type="submit">Salvar saída ✓</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script>
+    function selecionarVeiculo(id) {
+        if (id) {
+            window.location.href = "/veiculo/saida/" + id;
+        } else {
+            window.location.href = "/veiculo/registrar_saida";
+        }
+    }
+</script>
+</body>
+</html>

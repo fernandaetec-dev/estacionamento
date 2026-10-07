@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo cadastro | Estacionamento Escolar</title>
+    <link rel="stylesheet" href="/estacionamento.css">
+</head>
+<body class="auth-page">
+<main class="auth-shell">
+    <section class="auth-aside">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">+</span>
+            <span class="brand-copy"><strong>Estacionamento</strong><span>Gestão escolar</span></span>
+        </div>
+        <h1>Crie seu acesso à gestão.</h1>
+        <p>Preencha seus dados uma única vez para utilizar o controle de estacionamento da escola.</p>
+    </section>
+
+    <section class="auth-card">
+        <p class="eyebrow">Novo usuário</p>
+        <h2>Fazer cadastro</h2>
+        <p class="subtitle">Informe seus dados para criar seu acesso ao sistema.</p>
+
+        <form method="post" action="/efetuar_cadastro" class="form-grid">
+            <div class="field">
+                <label for="nome">NOME COMPLETO</label>
+                <input required type="text" name="nome" id="nome" placeholder="Digite seu nome" autocomplete="name">
+            </div>
+
+            <div class="form-grid two">
+                <div class="field">
+                    <label for="cpf">CPF</label>
+                    <input required type="text" name="cpf" id="cpf" placeholder="000.000.000-00" inputmode="numeric">
+                </div>
+                <div class="field">
+                    <label for="telefone">TELEFONE</label>
+                    <input required type="text" name="telefone" id="telefone" placeholder="(11) 99999-9999" inputmode="tel">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="email">E-MAIL</label>
+                <input required type="email" name="email" id="email" placeholder="voce@escola.com.br" autocomplete="email">
+            </div>
+
+            <div class="form-grid two">
+                <div class="field">
+                    <label for="senha">SENHA</label>
+                    <input required type="password" name="senha" id="senha" placeholder="Crie uma senha" autocomplete="new-password">
+                </div>
+                <div class="field">
+                    <label for="data">DATA DE NASCIMENTO</label>
+                    <input required type="date" name="data" id="data">
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-full" type="submit">Criar meu cadastro <span aria-hidden="true">→</span></button>
+        </form>
+
+        <p class="auth-footer">Já possui acesso? <a href="/">Voltar para o login</a></p>
+    </section>
+</main>
+</body>
+</html>
