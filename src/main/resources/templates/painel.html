@@ -33,7 +33,7 @@
         <header class="topbar">
             <div>
                 <p class="eyebrow">Central de controle</p>
-                <h1 class="page-title">Olá! 👋</h1>
+                <h1 class="page-title">Olá!</h1>
                 <p class="page-subtitle">O que você deseja registrar agora?</p>
             </div>
             <div class="date-chip">● Sistema online</div>
@@ -73,6 +73,7 @@
                     <tr>
                         <th scope="col">Placa</th>
                         <th scope="col">Modelo</th>
+                        <th scope="col">Cor</th>
                         <th scope="col">Entrada</th>
                         <th scope="col">Saída</th>
                         <th scope="col">Status</th>
@@ -83,14 +84,19 @@
                     <tr th:each="veiculo : ${veiculos}">
                         <td class="plate-cell" th:text="${veiculo.placa}"></td>
                         <td class="model-cell" th:text="${veiculo.modelo}"></td>
-                        <td class="time-cell" th:text="${veiculo.horaEntrada}"></td>
-                        <td class="time-cell" th:text="${veiculo.horaSaida}"></td>
+                        <td class="model-cell" th:text="${veiculo.cor}"></td>
+                        <td class="time-cell" th:text="${#temporals.format(veiculo.horaEntrada, 'HH:mm')}"></td>
+                        <td class="time-cell" th:text="${#temporals.format(veiculo.horaSaida, 'HH:mm')}"></td>
                         <td>
                             <span class="status-badge status-parked">
                                 <span class="status-dot" aria-hidden="true"></span>
                                 Estacionado
                             </span>
                         </td>
+                    </tr>
+
+                    <tr th:if="${#lists.isEmpty(veiculos)}">
+                        <td colspan="4">Nenhum veículo estacionado</td>
                     </tr>
                 </tbody>
             </table>

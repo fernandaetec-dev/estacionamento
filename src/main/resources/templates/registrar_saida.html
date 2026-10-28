@@ -33,30 +33,35 @@
                         <p>Escolha o veículo que está deixando o estacionamento.</p>
                     </div>
                 </div>
+                    <div class="table-scroll">
+                        <table class="parking-table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Placa</th>
+                                <th scope="col">Modelo</th>
+                                <th scope="col">Entrada</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
 
-                <form>
-                    <div class="field">
-                        <label for="placa">VEÍCULO NO ESTACIONAMENTO</label>
-                        <select id="placa" onchange="selecionarVeiculo(this.value)">
-                            <option value="">Selecione a placa</option>
-                            <option th:each="v : ${veiculos}"
-                                    th:value="${v.id}"
-                                    th:text="${v.placa}"
-                                    th:selected="${veiculo != null && veiculo.id == v.id}">
-                            </option>
-                        </select>
-                    </div>
+                            <tbody>
+                            <tr th:each="veiculo : ${veiculos}">
+                                <td class="plate-cell" th:text="${veiculo.placa}"></td>
+                                <td class="model-cell" th:text="${veiculo.modelo}"></td>
+                                <td class="time-cell" th:text="${#temporals.format(veiculo.horaEntrada, 'HH:mm')}"></td>
+                                <form th:action="'saida/'+${veiculo.id}">
+                                    <td>
+                                        <button class="btn btn-primary" type="submit">Salvar saída</button>
+                                    </td>
+                                </form>
+                            </tr>
 
-                    <div th:if="${veiculo != null}" class="selected-vehicle">
-                        <strong>Veículo selecionado:</strong>
-                        <span th:text="${veiculo.modelo + ' • ' + veiculo.cor}"></span>
+                            <tr th:if="${#lists.isEmpty(veiculos)}">
+                                <td colspan="4">Nenhum veículo estacionado</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-
-                    <div class="actions">
-                        <a class="btn btn-light" href="/">Cancelar</a>
-                        <button class="btn btn-primary" type="submit">Salvar saída ✓</button>
-                    </div>
-                </form>
             </section>
         </div>
     </main>

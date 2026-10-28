@@ -22,8 +22,11 @@ public class VeiculoController {
     VeiculoService service;
 
     @PostMapping("cadastrar")
-    public void cadastrar(Veiculo w) {
+    public String cadastrar(Veiculo w, Model model) {
         service.cadastrarVeiculo(w);
+        var veiculos = service.listaVeiculo();
+        model.addAttribute("veiculos", veiculos);
+        return "painel";
     }
 
     @GetMapping("registrar_entrada")
@@ -44,14 +47,17 @@ public class VeiculoController {
     @GetMapping("saida/{id}")
     public String getVeiculo(Model model, @PathVariable Long id) {
 
+        service.registrarSaida(id);
+
         var veiculos = service.listaVeiculo();
 
         model.addAttribute("veiculos", veiculos);
 
+/*
         VeiculoEntity veiculo = service.buscaVeiculoPorId(id);
 
         model.addAttribute("veiculo", veiculo);
-
-        return "registrar_saida";
+*/
+        return "redirect:/veiculo/registrar_saida";
     }
 }

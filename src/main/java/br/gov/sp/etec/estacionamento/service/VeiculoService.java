@@ -14,4 +14,5 @@ public interface VeiculoService {
     Boolean deletarVeiculo(Long id);
     VeiculoEntity atualizarVeiculo(VeiculoEntity veiculo);
     VeiculoEntity buscaVeiculoPorId(Long id);
+    void registrarSaida(Long id);
 }

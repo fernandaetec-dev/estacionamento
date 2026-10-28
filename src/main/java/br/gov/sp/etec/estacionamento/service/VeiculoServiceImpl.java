@@ -32,6 +32,20 @@ public class VeiculoServiceImpl implements VeiculoService {
     }
 
     @Override
+    public void registrarSaida(Long id) {
+
+        var veiculo = repository.findById(id).orElseThrow();
+
+        if(veiculo.getHoraSaida() == null) {
+
+            veiculo.setHoraSaida(LocalDateTime.now());
+            veiculo.setEstacionado(false);
+
+            repository.save(veiculo);
+        }
+    }
+
+    @Override
     public Boolean deletarVeiculo(Long id) {
 
         try {
@@ -45,6 +59,16 @@ public class VeiculoServiceImpl implements VeiculoService {
     @Override
     public List<VeiculoEntity> listaVeiculo() {
         List<VeiculoEntity> veiculos = repository.findAll();
+        List<VeiculoEntity> veiculosFiltrados = new ArrayList<>();
+
+        for (var veiculo : veiculos) {
+
+            if (veiculo.getEstacionado() == null) {
+
+                veiculosFiltrados.add(veiculo);
+            }
+        }
+
         return veiculos;
     }
 
